@@ -60,8 +60,9 @@
 			<li 
 				class="list-group-item d-flex align-items-center" 
 				v-for="(task, index) in tasks"
-			>
-				&nbsp;{{ task }}
+			> <span :style="{'text-decoration': task.status === 'done' ? 'line-through' : 'none'}">
+					&nbsp;{{ task.name }}
+				</span>
 				<div class="ms-auto">
 					<span
 						class="badge bg-success rounded-pill pointer me-2"
