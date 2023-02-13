@@ -20,10 +20,13 @@ const app = createApp({
     },
 
     doneTask(i) {
+      this.tasks[i].status = "done";
+      console.log(this.tasks[i])
+    },
 
-     this.tasks[i].status = "done";
-     console.log(this.tasks[i])
-
+    resetStatus(i) {
+      this.tasks[i].status = "todo";
+      console.log(this.tasks[i])
     },
 
     removeTask(i) {

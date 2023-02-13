@@ -57,24 +57,19 @@
 
 		<!-- Numbered List -->
 		<ol class="list-group list-group-numbered">
-			<li 
-				class="list-group-item d-flex align-items-center" 
-				v-for="(task, index) in tasks"
-			> <span :style="{'text-decoration': task.status === 'done' ? 'line-through' : 'none'}">
+			<li class="list-group-item d-flex align-items-center"	    v-for="(task, index) in tasks"> 
+				<span :style="{'text-decoration': task.status === 'done' ? 'line-through' : 'none', 'color': task.status === 'done' ? 'red' : 'inherit'}">
 					&nbsp;{{ task.name }}
 				</span>
 				<div class="ms-auto">
-					<span
-						class="badge bg-success rounded-pill pointer me-2"
-						@click="doneTask(index)"
-					>
+					<span class="badge bg-success rounded-pill pointer me-2"     v-if="task.status === 'todo'" @click="doneTask(index)">
 						<i class="fa-solid fa-thumbs-up"></i>
 					</span>
-					<span
-					class="badge bg-danger rounded-pill pointer"
-					@click="removeTask(index)"
-					>
-					<i class="fa fa-times"></i>
+					<span class="badge bg-warning rounded-pill pointer me-2"     v-if="task.status === 'done'" @click="resetStatus(index)">
+						<i class="fa-solid fa-rotate-right"></i>
+					</span>					
+					<span class="badge bg-danger rounded-pill pointer"     @click="removeTask(index)">
+						<i class="fa fa-times"></i>
 					</span>
 				</div>
 			</li>
