@@ -43,7 +43,7 @@
 		<div class="input-group input-group-lg">
 			<input 
 				type="text" class="form-control" placeholder="New Task" aria-label="New Task" aria-describedby="button-addon2"
-				v-model="newTask"
+				v-model="newTask.name"
 			>
 			<button
 				class="btn btn-outline-secondary" type="button" id="button-addon2"
@@ -62,12 +62,20 @@
 				v-for="(task, index) in tasks"
 			>
 				&nbsp;{{ task }}
-				<span
-					class="badge bg-danger rounded-pill ms-auto pointer"
+				<div class="ms-auto">
+					<span
+						class="badge bg-success rounded-pill pointer me-2"
+						@click="doneTask(index)"
+					>
+						<i class="fa-solid fa-thumbs-up"></i>
+					</span>
+					<span
+					class="badge bg-danger rounded-pill pointer"
 					@click="removeTask(index)"
-				>
+					>
 					<i class="fa fa-times"></i>
-				</span>
+					</span>
+				</div>
 			</li>
 		</ol>
 	</div>
